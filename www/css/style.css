@@ -1,0 +1,43 @@
+/* Empty. Add your own CSS if you like */
+
+.tabs .tab-item .icon.unicorn {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 75%;
+  background-image: url('http://image005.flaticon.com/1/png/512/33/33118.png');
+  background-size:contain;
+}
+
+img {
+  width: 33%;
+  padding: 2px;
+}
+
+ion-content {
+  background-color: black;
+}
+
+.image-modal {
+    width: 100% !important;
+    height: 100%;
+    top: 0 !important;
+    left: 0 !important;
+    background: rgba(128, 128, 128, 0.5); ;
+
+}
+
+.image-modal img {
+  width: 100%;
+}
+
+.fullscreen-image {
+    max-width: 100%;
+    max-height: 100%;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+}

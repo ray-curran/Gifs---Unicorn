@@ -1,0 +1,15 @@
+<ion-view view-title="Endless GIFs">
+  <ion-content class="padding">
+    <form ng-submit="search(query)">
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search" ng-model="query" placeholder="Search for other GIFs"/>
+    </label>
+    </form>
+      <img ng-repeat="gif in unicorns.data" ng-click="showImages($index)" ng-src="{{gif.images.fixed_height_small.url}}"/>
+      <ion-infinite-scroll
+        icon="ion-loading-c"
+        on-infinite="loadMoreData()">
+      </ion-infinite-scroll>
+  </ion-content>
+</ion-view>
