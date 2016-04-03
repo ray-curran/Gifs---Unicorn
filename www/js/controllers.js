@@ -1,19 +1,15 @@
 angular.module('unikorn.controllers', [])
 
 .controller('UnicornsCtrl', function($scope, unicorns, $ionicModal, $http) {
-  $scope.unicorns = { data: []}
+
+  unicorns.search('unicorn')
+  $scope.unicorns = unicorns.gifs
 
   $scope.search = function(query) {
-    $scope.term = query;
-    var url = "http://api.giphy.com/v1/gifs/search?q=" + query + "&limit=100&api_key=dc6zaTOxFJmzC"
-    $http.get(url)
-    .success(function(data){
-    $scope.unicorns = data;
-  })
-  }
-
-  $scope.term = 'unicorn';
-  $scope.search($scope.term);
+    unicorns.search(query).then(function() {
+      $scope.unicorns = unicorns.gifs
+    }
+    )}
 
   $scope.showImages = function(index) {
     $scope.imageUrl = $scope.unicorns.data[index].images.original.url;
@@ -36,7 +32,7 @@ angular.module('unikorn.controllers', [])
   };
 
   $scope.loadMoreData = function() {
-    var url = "http://api.giphy.com/v1/gifs/search?q=" + $scope.term + "&limit=100&offset=" + $scope.unicorns.data.length + "&api_key=dc6zaTOxFJmzC";
+    var url = "http://api.giphy.com/v1/gifs/search?q=" + unicorns.term + "&limit=100&offset=" + $scope.unicorns.data.length + "&api_key=dc6zaTOxFJmzC";
     $http.get(url).success(function(data){
       $scope.unicorns.data = $scope.unicorns.data.concat(data.data)
     })

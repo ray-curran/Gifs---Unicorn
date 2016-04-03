@@ -10,22 +10,25 @@ angular.module('unikorn.services', [])
   })
 }])
 
-.factory('unicorns', ['$http', function($http) {
+
+.factory('unicorns', ['$http', '$q', function($http, $q) {
   var o = {
     gifs: { data: []},
     term:'unicorn'
   }
 
   o.search = function(query) {
-    o.term = query
+    var defer = $q.defer();
+
+    o.term = query;
+    console.log(o.term);
     var url = "http://api.giphy.com/v1/gifs/search?q=" + o.term + "&limit=100&api_key=dc6zaTOxFJmzC";
     $http.get(url)
       .success(function(data){
       o.gifs = data;
+      defer.resolve(true);
   })
-      return o.gifs
+      return defer.promise;
   };
-
-
   return o;
 }])
