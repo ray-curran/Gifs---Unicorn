@@ -21,7 +21,6 @@ angular.module('unikorn.services', [])
     var defer = $q.defer();
 
     o.term = query;
-    console.log(o.term);
     var url = "http://api.giphy.com/v1/gifs/search?q=" + o.term + "&limit=100&api_key=dc6zaTOxFJmzC";
     $http.get(url)
       .success(function(data){
@@ -30,5 +29,17 @@ angular.module('unikorn.services', [])
   })
       return defer.promise;
   };
+
+  o.loadMoreData = function() {
+    var defer = $q.defer();
+    var url = "http://api.giphy.com/v1/gifs/search?q=" + o.term + "&limit=100&offset=" + o.gifs.data.length + "&api_key=dc6zaTOxFJmzC";
+     $http.get(url).success(function(data){
+      o.gifs.data = o.gifs.data.concat(data.data)
+      defer.resolve(true);
+    })
+     return defer.promise;
+  }
+
+
   return o;
 }])

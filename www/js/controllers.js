@@ -12,7 +12,7 @@ angular.module('unikorn.controllers', [])
     )}
 
   $scope.showImages = function(index) {
-    $scope.imageUrl = $scope.unicorns.data[index].images.original.url;
+    $scope.imageUrl = unicorns.gifs.data[index].images.original.url;
     $scope.showModal('templates/modal.html');
   }
 
@@ -32,11 +32,11 @@ angular.module('unikorn.controllers', [])
   };
 
   $scope.loadMoreData = function() {
-    var url = "http://api.giphy.com/v1/gifs/search?q=" + unicorns.term + "&limit=100&offset=" + $scope.unicorns.data.length + "&api_key=dc6zaTOxFJmzC";
-    $http.get(url).success(function(data){
-      $scope.unicorns.data = $scope.unicorns.data.concat(data.data)
+    unicorns.loadMoreData().then(function() {
+      $scope.unicorns = unicorns.gifs
+      $scope.$broadcast('scroll.infiniteScrollComplete');
     })
-    $scope.$broadcast('scroll.infiniteScrollComplete');
+
   };
 })
 
