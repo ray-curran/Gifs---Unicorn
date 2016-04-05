@@ -8,10 +8,11 @@
   background-size:contain;
 }
 
-img {
+.thumb {
   width: 33%;
   padding: 2px;
   border-radius: 5px;
+  height: 10em;
 }
 
 ion-content {

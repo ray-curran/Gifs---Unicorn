@@ -43,3 +43,34 @@ angular.module('unikorn.services', [])
 
   return o;
 }])
+
+.service('modals', ['$ionicModal', function($ionicModal, unicorns){
+
+  var that = this;
+
+  this.showModal = function(scope) {
+    $ionicModal.fromTemplateUrl('templates/modal.html', {
+      scope: scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      scope.modal = modal;
+      scope.modal.show();
+    });
+  };
+
+  this.showImages = function(index, scope){
+    return scope.gifs.data[index].images.original.url;
+  };
+
+  this.closeModal = function(scope) {
+    scope.modal.hide();
+    scope.modal.remove();
+  }
+}])
+
+
+
+
+
+
+
