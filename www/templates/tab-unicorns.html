@@ -6,7 +6,7 @@
       <input type="search" ng-model="query" placeholder="Search for other GIFs"/>
     </label>
     </form>
-      <img ng-repeat="gif in unicorns.data" ng-click="showImages($index)" ng-src="{{gif.images.fixed_height_small.url}}"/>
+      <img class="thumb" ng-repeat="gif in gifs.data" ng-click="showImages($index)" ng-src="{{gif.images.fixed_height_small.url}}"/>
       <ion-infinite-scroll
         icon="ion-loading-c"
         on-infinite="loadMoreData()">
