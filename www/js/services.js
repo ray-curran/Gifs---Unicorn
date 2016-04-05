@@ -11,6 +11,7 @@ angular.module('unikorn.services', [])
 }])
 
 
+
 .factory('unicorns', ['$http', '$q', function($http, $q) {
   var o = {
     gifs: { data: []},
@@ -44,9 +45,9 @@ angular.module('unikorn.services', [])
   return o;
 }])
 
-.service('modals', ['$ionicModal', function($ionicModal, unicorns){
 
-  var that = this;
+
+.service('modals', ['$ionicModal', function($ionicModal){
 
   this.showModal = function(scope) {
     $ionicModal.fromTemplateUrl('templates/modal.html', {
