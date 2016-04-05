@@ -51,7 +51,7 @@ angular.module('unikorn.services', [])
   this.showModal = function(scope) {
     $ionicModal.fromTemplateUrl('templates/modal.html', {
       scope: scope,
-      animation: 'slide-in-up'
+      animation: 'animated bounceInLeft'
     }).then(function(modal) {
       scope.modal = modal;
       scope.modal.show();
